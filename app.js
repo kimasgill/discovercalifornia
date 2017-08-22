@@ -53,6 +53,8 @@ app.post("/galleries", function(req, res){
 	});
 });
 
+
+
 // SHOW ROUTE
 app.get("/galleries/:id", function(req, res){
 	Gallery.findById(req.params.id, function(err, foundGallery){
@@ -66,7 +68,13 @@ app.get("/galleries/:id", function(req, res){
 
 // EDIT ROUTE
 app.get("/galleries/:id/edit", function(req, res){
-	res.render("edit");
+	Gallery.findById(req.params.id, function(err, foundGallery){
+		if(err){
+			res.redirect("/galleries");
+		} else {
+			res.render("edit", {gallery: foundGallery});
+		}
+	});
 });
 
 // START THE SERVER

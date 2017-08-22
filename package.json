@@ -1,0 +1,16 @@
+{
+  "name": "discovercalifornia",
+  "version": "1.0.0",
+  "description": "an app that shows a curated list of places to visit in California",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kim S.",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.7"
+  }
+}

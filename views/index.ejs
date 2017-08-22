@@ -6,7 +6,8 @@
 		<h2><%= gallery.title %></h2>
 		<img src= "<%= gallery.image %>" >
 		<span><%= gallery.created %></span>
-		<p><%= gallery.body %></p>
+		<p><%= gallery.body.substring(0, 100) %>...</p>
+		<a href="/galleries/<%=gallery._id %>">Read More</a>
 	</div>
 <% }); %>
 

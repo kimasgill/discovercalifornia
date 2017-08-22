@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+	<div class="ui huge header"><%= gallery.title %></div>
+	<div class="ui top attached">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%= gallery.image %>" >
+			<div class="content">
+				<span><%= gallery.created.toDateString() %></span>
+			</div>
+			<div class="description">
+				<p><%= gallery.body %></p>
+			</div>
+		</div>
+	</div>
+</div>
+<% include ./partials/footer %>

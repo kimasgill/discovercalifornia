@@ -1,7 +1,7 @@
 var bodyParser 	= require("body-parser"),
-		mongoose 		= require("mongoose"),
-		express 		= require("express"),
-		app 				= express();
+	mongoose 	= require("mongoose"),
+	express 	= require("express"),
+	app 		= express();
 
 // APP CONFIG
 mongoose.connect("mongodb://127.0.0.1/discovercali");
@@ -20,11 +20,11 @@ var gallerySchema = new mongoose.Schema({
 var Gallery = mongoose.model("Gallery", gallerySchema);
 
 // RESTFUL ROUTES
-
-app. get("/", function(req, res){
+app.get("/", function(req, res){
 	res.redirect("/galleries");
 });
 
+// INDEX ROUTE
 app.get("/galleries", function(req, res){
 	Gallery.find({}, function(err, galleries){
 		if(err){
@@ -35,6 +35,39 @@ app.get("/galleries", function(req, res){
 	});
 });
 
+// NEW ROUTE
+app.get("/galleries/new", function(req, res){
+	res.render("new");
+});
+
+// CREATE ROUTE
+app.post("/galleries", function(req, res){
+	// create blog
+	Gallery.create(req.body.gallery, function(err, newGallery){
+		if(err){
+			res.render("new");
+		} else {
+			// then, redirect to the index
+			res.redirect("/galleries");
+		}
+	});
+});
+
+// SHOW ROUTE
+app.get("/galleries/:id", function(req, res){
+	Gallery.findById(req.params.id, function(err, foundGallery){
+		if(err){
+			res.redirect("/galleries");
+		} else {
+			res.render("show", {gallery: foundGallery});
+		}
+	});
+});
+
+// EDIT ROUTE
+app.get("/galleries/:id/edit", function(req, res){
+	res.render("edit");
+});
 
 // START THE SERVER
 app.listen(process.env.PORT ||8080);

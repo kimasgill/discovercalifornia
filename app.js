@@ -21,6 +21,19 @@ var Gallery = mongoose.model("Gallery", gallerySchema);
 
 // RESTFUL ROUTES
 
+app. get("/", function(req, res){
+	res.redirect("/galleries");
+});
+
+app.get("/galleries", function(req, res){
+	Gallery.find({}, function(err, galleries){
+		if(err){
+			console.log("ERROR!");
+		} else {
+			res.render("index", {galleries: galleries});
+		}
+	});
+});
 
 
 // START THE SERVER

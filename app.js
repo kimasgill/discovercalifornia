@@ -1,13 +1,17 @@
-var bodyParser 	= require("body-parser"),
-	mongoose 	= require("mongoose"),
-	express 	= require("express"),
-	app 		= express();
+var bodyParser 		 = require("body-parser"),
+	methodOverride 	 = require("method-override"),
+	expressSanitizer = require("express-sanitizer"),
+	mongoose 		 = require("mongoose"),
+	express 		 = require("express"),
+	app 			 = express();
 
 // APP CONFIG
 mongoose.connect("mongodb://127.0.0.1/discovercali");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(expressSanitizer());
+app.use(methodOverride("_method"));
 
 // MONGOOSE/MODEL CONFIG
 var gallerySchema = new mongoose.Schema({
@@ -73,6 +77,28 @@ app.get("/galleries/:id/edit", function(req, res){
 			res.redirect("/galleries");
 		} else {
 			res.render("edit", {gallery: foundGallery});
+		}
+	});
+});
+
+// UPDATE ROUTE
+app.put("/galleries/:id", function(req, res){
+	Gallery.findByIdAndUpdate(req.params.id, req.body.gallery, function(err, updatedGallery){
+		if(err){
+			res.redirect("/galleries");
+		} else {
+			res.redirect("/galleries/" + req.params.id);
+		}
+	})
+});
+
+// DELETE ROUTE
+app.delete("/galleries/:id", function(req, res){
+	Gallery.findByIdAndRemove(req.params.id, function(err, deleteGallery){
+		if(err){
+			res.redirect("/galleries");
+		} else {
+			res.redirect("/galleries");
 		}
 	});
 });

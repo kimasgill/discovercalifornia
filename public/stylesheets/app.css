@@ -1,11 +1,37 @@
+body {
+	background-color: #f6ffff;
+}
+
+/* Spacing around date and location description*/
+
+p {
+	padding-bottom: 20px;
+}
+
+.content{
+	padding: 20px 0 5px 0;
+}
+
+/* Change icon size */
 i.icon {
 	font-size:2em;
 }
 
+/* Spacing for the top of index page */
 .container.main {
 	margin-top: 7.0em;
 }
 
+/* Puts delete button on same line as edit button */
 #delete {
 	display: inline;
+}
+
+
+/* Change header and description color */
+p,
+.ui.header,
+.ui.items > .item > .content > a.header,
+.ui.items > .item > .content > .description {
+	color: #00534f;
 }

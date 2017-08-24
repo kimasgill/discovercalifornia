@@ -47,6 +47,7 @@ app.get("/galleries/new", function(req, res){
 // CREATE ROUTE
 app.post("/galleries", function(req, res){
 	// create blog
+	req.body.blog.body = req.sanitize(req.body.blog.body);
 	Gallery.create(req.body.gallery, function(err, newGallery){
 		if(err){
 			res.render("new");
@@ -83,6 +84,7 @@ app.get("/galleries/:id/edit", function(req, res){
 
 // UPDATE ROUTE
 app.put("/galleries/:id", function(req, res){
+	req.body.blog.body = req.sanitize(req.body.blog.body);
 	Gallery.findByIdAndUpdate(req.params.id, req.body.gallery, function(err, updatedGallery){
 		if(err){
 			res.redirect("/galleries");

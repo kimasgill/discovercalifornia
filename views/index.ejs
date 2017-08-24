@@ -1,14 +1,34 @@
 <% include ./partials/header %>
-<h1>Index page!!</h1>
 
-<% galleries.forEach(function(gallery){ %>
-	<div>
-		<h2><%= gallery.title %></h2>
-		<img src= "<%= gallery.image %>" >
-		<span><%= gallery.created %></span>
-		<p><%= gallery.body.substring(0, 100) %>...</p>
-		<a href="/galleries/<%=gallery._id %>">Read More</a>
+<div class="ui main text container">
+	<div class="ui huge header teal">Discover California</div>
+	<div class="ui top attached piled segment">
+		<div class="ui divided items">
+			<% galleries.forEach(function(gallery){ %>
+				<div class="item">
+					<div class="image">
+						<img src="<%= gallery.image %>" >
+					</div>
+					<div class="content">
+						<a class="header" href="/galleries/<%= gallery._id%>"><%= gallery.title %></a>
+						<div class="meta">
+							<span><%= gallery.created.toDateString() %></span>
+						</div>
+						<div class="description">
+							<p><%- gallery.body.substring(0, 100) %>...</p>
+						</div>
+						<div class="extra">
+							<a class="ui floated basic teal button" href="/galleries/<%=gallery._id %>">
+								Read More
+								<i class="right chevron small icon"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<% }); %>
+		</div>
 	</div>
-<% }); %>
+</div>
+</div>
 
 <% include ./partials/footer %>

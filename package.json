@@ -4,6 +4,7 @@
   "description": "an app that shows a curated list of places to visit in California",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kim S.",

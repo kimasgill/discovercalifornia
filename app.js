@@ -4,9 +4,10 @@ var bodyParser 		 = require("body-parser"),
 	mongoose 		 = require("mongoose"),
 	express 		 = require("express"),
 	app 			 = express();
+	uri				 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647"
 
 // APP CONFIG
-mongoose.connect("mongodb://127.0.0.1/discovercali");
+mongoose.connect(uri);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));

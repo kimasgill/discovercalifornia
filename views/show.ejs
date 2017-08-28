@@ -11,9 +11,10 @@
 				<p><%= gallery.body %></p>
 			</div>
 			<a class="ui orange basic button" href="/galleries/<%= gallery._id %>/edit">Edit</a>
-			<form id ="delete" action="/galleries/<%= gallery._id %>?_method=DELETE" method="POST">
+			<!-- Commented out delete button while deployed to Heroku -->
+			<!-- <form id ="delete" action="/galleries/<%= gallery._id %>?_method=DELETE" method="POST">
 				<button class="ui red basic button">Delete</button>
-			</form> 
+			</form>  -->
 		</div>
 	</div>
 </div>

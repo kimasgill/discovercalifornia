@@ -4,8 +4,7 @@ var bodyParser 		 	= require("body-parser"),
 	mongoose 		 = require("mongoose"),
 	express 		 = require("express"),
 	app 			 = express(),
-	uri			 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647";
-
+	uri				= require('./config.js');
 // APP CONFIG
 mongoose.connect(uri);
 app.set("view engine", "ejs");

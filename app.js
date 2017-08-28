@@ -3,8 +3,8 @@ var bodyParser 		 = require("body-parser"),
 	expressSanitizer = require("express-sanitizer"),
 	mongoose 		 = require("mongoose"),
 	express 		 = require("express"),
-	app 			 = express();
-	uri				 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647"
+	app 			 = express(),
+	uri				 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647";
 
 // APP CONFIG
 mongoose.connect(uri);
@@ -47,8 +47,8 @@ app.get("/galleries/new", function(req, res){
 
 // CREATE ROUTE
 app.post("/galleries", function(req, res){
-	// create blog
-	req.body.blog.body = req.sanitize(req.body.blog.body);
+	// create gallery
+	req.body.gallery.body = req.sanitize(req.body.gallery.body);
 	Gallery.create(req.body.gallery, function(err, newGallery){
 		if(err){
 			res.render("new");
@@ -85,7 +85,7 @@ app.get("/galleries/:id/edit", function(req, res){
 
 // UPDATE ROUTE
 app.put("/galleries/:id", function(req, res){
-	req.body.blog.body = req.sanitize(req.body.blog.body);
+	req.body.gallery.body = req.sanitize(req.body.gallery.body);
 	Gallery.findByIdAndUpdate(req.params.id, req.body.gallery, function(err, updatedGallery){
 		if(err){
 			res.redirect("/galleries");

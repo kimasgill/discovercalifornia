@@ -1,10 +1,10 @@
-var bodyParser 		 = require("body-parser"),
-	methodOverride 	 = require("method-override"),
-	expressSanitizer = require("express-sanitizer"),
+var bodyParser 		 	= require("body-parser"),
+	methodOverride 	 	= require("method-override"),
+	expressSanitizer 	= require("express-sanitizer"),
 	mongoose 		 = require("mongoose"),
 	express 		 = require("express"),
 	app 			 = express(),
-	uri				 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647";
+	uri			 = "mongodb://heroku_lgp3w647:37j1kqilvgthpm564oev40hab1@ds161493.mlab.com:61493/heroku_lgp3w647";
 
 // APP CONFIG
 mongoose.connect(uri);

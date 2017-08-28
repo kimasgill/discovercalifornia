@@ -1,10 +1,10 @@
-var bodyParser 		 	= require("body-parser"),
+var 	bodyParser 		= require("body-parser"),
 	methodOverride 	 	= require("method-override"),
 	expressSanitizer 	= require("express-sanitizer"),
-	mongoose 		 	= require("mongoose"),
-	express 		 	= require("express"),
-	app 			 	= express(),
-	uri					= require('./config.js');
+	mongoose 		= require("mongoose"),
+	express 		= require("express"),
+	app 			= express(),
+	uri			= require('./config.js');
 
 // APP CONFIG
 mongoose.connect(uri);
